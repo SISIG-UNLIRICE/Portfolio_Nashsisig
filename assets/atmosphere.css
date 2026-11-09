@@ -1,0 +1,157 @@
+/* Welcome and the authentic butterfly share one brief loading composition. */
+.intro-sequence { isolation: isolate; background: #16051f; }
+.intro-sequence::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 1;
+  background: radial-gradient(ellipse at 50% 46%,transparent 18%,rgba(12,2,23,.18) 66%,rgba(8,2,16,.66) 100%);
+  animation: none;
+  pointer-events: none;
+}
+.welcome-nebula {
+  position: absolute;
+  inset: -18%;
+  z-index: 0;
+  opacity: .96;
+  filter: none;
+  background:
+    radial-gradient(ellipse at 72% 28%,rgba(125,25,190,.64),transparent 39%),
+    radial-gradient(ellipse at 25% 68%,rgba(77,18,125,.72),transparent 43%),
+    radial-gradient(ellipse at 60% 90%,rgba(86,15,126,.38),transparent 44%),
+    linear-gradient(145deg,#100317 10%,#2c073e 56%,#10061d);
+  animation: nebula-orbit 22s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+.intro-loader { width: min(100%,680px); gap: 22px; padding: 32px 24px; text-align: center; }
+.loading-welcome { position: relative; margin: 0; color: #fff; font: 400 clamp(2.75rem,7vw,5.75rem)/1.12 'Megrim',sans-serif; letter-spacing: .035em; text-shadow: 0 0 26px rgba(228,193,255,.16); }
+.loading-caption { color: #c9b3df; font: 400 10px/1.5 'Julius Sans One',sans-serif; letter-spacing: .22em; }
+.welcome-particles { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+.welcome-particle {
+  position: absolute;
+  left: var(--x,50%);
+  top: var(--y,50%);
+  width: var(--size,2px);
+  height: var(--size,2px);
+  border-radius: 50%;
+  color: #d0a6ff;
+  background: currentColor;
+  opacity: .55;
+  box-shadow: 0 0 7px rgba(194,135,255,.44);
+  animation: particle-drift var(--duration,14s) ease-in-out infinite alternate,
+    particle-glimmer 5.6s ease-in-out infinite;
+  animation-delay: var(--delay,0s),var(--delay,0s);
+}
+.welcome-particle::after {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: -39px;
+  width: 1px;
+  height: 1px;
+  border-radius: inherit;
+  background: #edddff;
+  opacity: .45;
+}
+.welcome-particle:nth-child(3n) { color: #a2c9ff; }
+.welcome-particle:nth-child(4n)::after { left: -35px; top: 51px; }
+.welcome-particle:nth-child(5n) { color: #f5ddff; animation-direction: alternate-reverse,normal; }
+.intro-sequence.is-paused .welcome-nebula,
+.intro-sequence.is-paused .welcome-particle { animation-play-state: paused; }
+@keyframes particle-drift {
+  from { transform: translate3d(0,18px,0); }
+  to { transform: translate3d(var(--drift,26px),-40px,0); }
+}
+@keyframes particle-glimmer {
+  0%,100% { opacity: .26; }
+  45% { opacity: .85; }
+  70% { opacity: .42; }
+}
+@keyframes nebula-orbit {
+  0% { transform: translate3d(-3%,-2%,0) rotate(-3deg) scale(1); }
+  55% { transform: translate3d(3%,2%,0) rotate(2deg) scale(1.06); }
+  100% { transform: translate3d(-1%,4%,0) rotate(4deg) scale(1.02); }
+}
+
+/* Preserve the authentic low-resolution butterfly; place the glow behind it. */
+.butterfly {
+  display: inline-grid;
+  place-items: center;
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 132 / 138;
+  width: clamp(132px,16vw,184px);
+  overflow: visible;
+  animation: butterfly-hover 6s ease-in-out infinite;
+}
+.butterfly::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 10% -6%;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(ellipse,rgba(78,155,243,.18),rgba(120,50,207,.11) 46%,transparent 72%);
+  opacity: .75;
+  transition: opacity .3s ease,transform .5s ease;
+}
+.butterfly-logo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+  filter: drop-shadow(0 0 2px rgba(110,192,255,.32));
+  animation: butterfly-wing-light 4.8s ease-in-out infinite;
+}
+.intro-loader .butterfly { width: clamp(132px,16vw,172px); }
+.academic-heading > .butterfly { width: clamp(148px,16vw,184px); }
+.butterfly--mini { width: 95px; }
+button.butterfly--interactive {
+  appearance: none;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  transition: scale .2s ease;
+}
+button.butterfly--interactive:focus-visible { outline: 1px solid #c4acff; outline-offset: 12px; }
+button.butterfly--interactive:focus-visible::before { opacity: 1; transform: scale(1.15); }
+button.butterfly--interactive:active { scale: .96; }
+.butterfly.butterfly-excited .butterfly-logo { animation-duration: 2s; }
+.butterfly.butterfly-dart { animation: butterfly-playful-arc .85s cubic-bezier(.3,.1,.2,1) 1; }
+@keyframes butterfly-hover {
+  0%,100% { transform: translate3d(var(--wing-x,0px),var(--wing-y,0px),0) rotate(-3deg); }
+  50% { transform: translate3d(var(--wing-x,0px),calc(var(--wing-y,0px) - 12px),0) rotate(3deg); }
+}
+@keyframes butterfly-wing-light {
+  0%,100% { transform: perspective(700px) rotateY(-5deg); }
+  50% { transform: perspective(700px) rotateY(5deg); }
+}
+@keyframes butterfly-playful-arc {
+  0%,100% { transform: translate3d(0,0,0) rotate(-3deg); }
+  35% { transform: translate3d(24px,-28px,0) rotate(9deg); }
+  70% { transform: translate3d(-8px,-10px,0) rotate(-6deg); }
+}
+@media (hover: hover) and (pointer: fine) {
+  button.butterfly--interactive:hover::before { opacity: 1; transform: scale(1.15); }
+}
+@media (max-width: 720px) {
+  .welcome-particle:nth-child(n+19) { display: none; }
+  .academic-heading > .butterfly { width: 156px; }
+}
+@media (max-height: 480px) {
+  .intro-loader { gap: 12px; padding-block: 20px; }
+  .intro-loader .butterfly { width: 96px; }
+  .loading-welcome { font-size: clamp(2.5rem,6vw,3.8rem); }
+  .loading-caption { font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .welcome-nebula,.welcome-particle,.butterfly,.butterfly-logo { animation: none !important; }
+  .welcome-particle { opacity: .5; }
+  .butterfly,.butterfly-logo { transform: none; }
+  button.butterfly--interactive { transition: none; }
+}

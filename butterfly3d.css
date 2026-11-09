@@ -1,0 +1,23 @@
+/* Pointer-transparent 3D canvas: never blocks buttons, scroll or dragging. */
+.nash-flying-butterfly {
+  position: fixed;
+  left: 0; top: 0;
+  width: 235px; height: 235px;
+  z-index: 105; /* above page content, below the 110-level glass navigation */
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(50vw,40vh,0);
+  transition: opacity .55s ease;
+  contain: layout style;
+  filter: drop-shadow(0 0 18px rgba(51,189,255,.24));
+}
+.nash-flying-butterfly.is-loaded { opacity: 1; }
+.nash-flying-butterfly canvas { display:block; width:100%; height:100%; }
+/* Retain original still-image fallback until WebGL and model both load. */
+.has-live-butterfly-3d .intro-loader .butterfly,
+.has-live-butterfly-3d .academic-heading > .butterfly {
+  opacity: 0 !important;
+}
+@media(prefers-reduced-motion: reduce){
+  .nash-flying-butterfly { transition:none; filter:none; }
+}

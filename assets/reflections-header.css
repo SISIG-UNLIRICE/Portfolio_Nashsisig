@@ -1,0 +1,15 @@
+/* Reflections layout under the shared glass header in assets/navigation.css. */
+body[data-page="reflections"] .reflections-content {
+  padding-top: calc(var(--nav-height) + clamp(65px, 10vh, 120px));
+}
+@media (max-width: 960px) {
+  body[data-page="reflections"] .reflections > .jelly-bg {
+    top: 0;
+    height: 100svh;
+  }
+}
+@media (max-width: 720px) {
+  body[data-page="reflections"] .reflections-content {
+    padding-top: calc(var(--nav-height) + 70px);
+  }
+}

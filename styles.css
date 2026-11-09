@@ -1,0 +1,518 @@
+:root {
+  color-scheme: dark;
+  --ink: #f7f4ff;
+  --muted: #cbc3d4;
+  --surface: #10091e;
+  --panel: rgba(165, 160, 174, .43);
+  --edge: rgba(205, 191, 220, .30);
+  --violet: #8c4de0;
+  --violet-light: #bb90fe;
+  --frame: 100%;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+section[id] { scroll-margin-top: var(--nav-height); }
+body { margin: 0; min-height: 100%; background: #10041b; color: var(--ink); font-family: 'Londrina Solid', 'Trebuchet MS', sans-serif; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid #d9b0ff; outline-offset: 4px; }
+button, a, .butterfly { cursor: pointer; }
+.sr-only { position: absolute!important; width: 1px!important; height: 1px!important; padding: 0!important; overflow: hidden!important; clip: rect(0,0,0,0)!important; white-space: nowrap!important; border: 0!important; }
+.site-shell, .portfolio-content { width: 100%; min-width: 0; }
+main { width: 100%; }
+.footer { width: 100%; margin: 0; padding: 28px clamp(18px,5vw,65px) 44px; color: #9e91a9; display: flex; justify-content: space-between; gap: 14px; font: 12px 'Julius Sans One',sans-serif; letter-spacing: .1em; }
+.footer span span { color: #d599fa; }
+
+/* Welcome and butterfly are decorative, bounded, and never gate interaction. */
+.intro-sequence { position: fixed; inset: 0; z-index: 500; display: grid; place-items: center; overflow: hidden; pointer-events: none; background: #190420; transition: opacity .35s ease, visibility .35s; }
+.intro-sequence.intro-hidden { opacity: 0; visibility: hidden; }
+.intro-loader { position: relative; z-index: 2; display: grid; place-items: center; }
+.intro-stars, .stars-layer { position: absolute; inset: 0; pointer-events: none; opacity: .5; background-image: radial-gradient(#e1a8ff 1px,transparent 1.5px),radial-gradient(#a8a2fa 1px,transparent 1.6px),radial-gradient(#7e4bba 1px,transparent 1.5px); background-size: 110px 92px,183px 167px,71px 137px; background-position: 8px 33px,57px 78px,31px 22px; }
+
+/* Authentic raster butterfly: modest display size and glow retain its details. */
+
+/* Full-width introduction with the supplied real jellyfish footage. */
+.hero { width: 100%; min-height: calc(100svh - var(--nav-height)); position: relative; isolation: isolate; background: #090917; }
+.jelly-bg { position: absolute; z-index: -1; inset: 0; overflow: hidden; pointer-events: none; background: #090917 url('assets/jellyfish-poster.webp?v=2.3.0') center / cover no-repeat; }
+.jelly-video { width: 100%; height: 100%; display: block; object-fit: cover; object-position: center; }
+.jelly-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg,rgba(5,5,20,.06),transparent 55%,rgba(12,5,25,.3)); }
+.hero-content { position:relative; display: grid; grid-template-columns: minmax(290px,.92fr) minmax(340px,1.08fr); min-height: calc(100svh - var(--nav-height)); max-width: 1640px; margin: auto; gap: clamp(60px,8vw,130px); padding: clamp(80px,11vh,120px) 65px; align-items: center; }
+
+/* Flat portrait inside clear collegiate PVC badge, matching user's ID reference. */
+.lanyard {
+  /* The real reference geometry: badge top 325px below the navbar and
+     a 350px fabric strap reaching 5px behind its bottom edge. */
+  position: absolute;
+  top: calc(var(--nav-height) + 325px);
+  left: 28.5%;
+  width: 242px;
+  margin: 0;
+  z-index: 4;
+  transform: translateX(-50%);
+}
+
+.lanyard-strap {position:absolute;z-index:1;bottom:calc(100% - 20px);left:50%;width:110px;height:350px;transform:translateX(-50%);pointer-events:none;}
+.lanyard-strap-side {position:absolute;top:0;width:23px;height:252px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(0deg,#fff2 0 1px,transparent 1px 3px),linear-gradient(90deg,#061027,#0f2955 43%,#04132e 100%);border-left:1px solid #345282;border-right:1px solid #061128;box-shadow:inset 2px 0 2px #b8d2fe16,2px 3px 5px #0006;}
+.lanyard-strap-side span {color:#e8b42b;font:700 10px/1 Arial,sans-serif;letter-spacing:-.01em;white-space:nowrap;writing-mode:vertical-rl;text-orientation:mixed;text-shadow:0 1px 1px #0009;}
+.lanyard-strap-side--left {left:26px;transform:rotate(-4deg);transform-origin:50% 0;}
+.lanyard-strap-side--right {right:26px;transform:rotate(4deg);transform-origin:50% 0;}
+.lanyard-buckle {position:absolute;z-index:3;top:245px;left:37px;width:36px;height:39px;border:2px solid #34414b;border-radius:3px 3px 5px 5px;background:linear-gradient(90deg,#111820 2%,#354249 48%,#121b24 97%);box-shadow:inset 0 0 0 1px #eef2f222,0 2px 5px #0009;}
+.lanyard-buckle::after {content:'';position:absolute;bottom:7px;left:5px;right:5px;height:3px;background:#768185;box-shadow:0 -5px #283943;}
+.lanyard-clip {position:absolute;top:284px;left:41px;width:28px;height:32px;display:grid;place-items:center;border:2px solid #876321;border-radius:2px;background:linear-gradient(90deg,#83601d,#e6b94f 45%,#b88825);box-shadow:inset 0 0 0 2px #412c0d44,0 2px 6px #0008;}
+.lanyard-clip-logo {border:1px solid #89641a;border-radius:50%;color:#52420f;font:bold 8px Georgia,serif;height:22px;width:22px;display:grid;place-items:center;}
+.lanyard-ring {position:absolute;z-index:6;top:-30px;left:calc(50% - 7px);height:41px;width:14px;border:3px solid #a6b2b6;border-radius:9px;box-shadow:inset 0 0 0 2px #15181b,1px 0 3px #0009;}
+.lanyard-ring::after {content:'';position:absolute;bottom:-5px;left:3px;height:12px;width:3px;border-radius:3px;background:#596568;}
+ .id-panel {position:relative;width:100%;aspect-ratio:.66;padding:37px 8px 8px;border:2px solid #b0b9b9;background:linear-gradient(108deg,#d1d9d9d9 0%,#8e989bc9 7%,#eef3f0c9 21%,#949ca2b8 45%,#e9ece6cf 81%,#a3b0b4d6 100%);box-shadow:0 15px 27px #0009,0 2px 4px #0008,inset 0 0 0 3px #edf1f388,inset 0 0 10px #f5f7ff99;border-radius:20px 20px 11px 11px;clip-path:polygon(0 12%,2% 10.6%,8% 10%,15% 8.7%,21% 5.2%,27% 1.6%,31% 0,69% 0,73% 1.6%,79% 5.2%,85% 8.7%,92% 10%,98% 10.6%,100% 12%,100% 100%,0 100%);}
+.id-panel::after {content:'';position:absolute;inset:4px;border-radius:16px 16px 7px 7px;border:1px solid #ffffff8a;box-shadow:inset 1px 1px 5px #ffffff7a;pointer-events:none;}
+.id-slot {position:absolute;z-index:4;top:13px;width:46px;height:14px;left:calc(50% - 23px);border:3px solid #aeb9b9;border-radius:13px;background:#070b0e;box-shadow:inset 0 2px 3px #000c,0 1px 2px #151a1f;}
+.id-paper {position:relative;width:100%;height:100%;padding:7px 5px 6px;border:2px solid #9cb5d7;border-radius:4px;display:flex;flex-direction:column;align-items:center;overflow:hidden;color:#142c57;background:linear-gradient(153deg,#f8faff 0%,#d8e6ff 56%,#a9d2ff 100%);box-shadow:0 0 0 1px #ffffff99,inset 0 0 9px #75a3dc55;font-family:Arial,Helvetica,sans-serif;}
+.id-paper::before {content:'';position:absolute;z-index:0;inset:18% -48% 0 -45%;background:repeating-radial-gradient(ellipse at 57% 53%,transparent 0 16px,#3b89e12b 17px 20px,transparent 22px 41px),linear-gradient(130deg,transparent 33%,#76aeeb22 35%,transparent 39%);transform:rotate(23deg);pointer-events:none;}
+.id-paper-watermark {position:absolute;z-index:0;right:-12%;top:36%;color:#468cd83f;font:bold 86px/1 Georgia,serif;transform:rotate(-16deg);pointer-events:none;}
+.id-school-heading,.id-gallery,.id-student-details,.id-gold-divider,.id-barcode {position:relative;z-index:1;}
+.id-school-heading {text-align:center;width:100%;margin:0 0 5px;}
+.id-school-heading strong {display:block;font:bold clamp(10px,.78vw,12px)/1 Georgia,serif;white-space:nowrap;font-variant:small-caps;letter-spacing:-.06em;}
+.id-school-heading span {display:block;font:7px/1.25 Arial,sans-serif;margin-top:2px;color:#24446c;white-space:nowrap;}
+.id-gallery {width:57%;aspect-ratio:.88;flex:0 0 auto;margin-bottom:0;border:2px solid #284c85;background:#a5b8d7;box-shadow:0 0 0 1px #ffffffcc,0 1px 4px #051a3a44;}
+.id-portrait {position:relative;width:100%;height:100%;overflow:hidden;}
+.id-portrait-image {position:absolute;inset:0;display:block;height:100%;width:100%;object-fit:cover;object-position:center 23%;opacity:0;transition:opacity .4s ease;pointer-events:none;user-select:none;}
+.id-portrait-image.is-current {opacity:1;}
+.id-student-details {display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;width:100%;margin-top:6px;margin-bottom:4px;}
+.id-student-details strong {font:700 clamp(9px,.76vw,11px)/1.07 Arial,sans-serif;white-space:nowrap;letter-spacing:-.045em;}
+.id-student-details span {font:700 8px/1.08 Arial,sans-serif;}
+.id-student-details span:last-child {font-size:9px;margin-top:1px;}
+.id-gold-divider {display:block;width:96%;height:5px;margin-top:auto;background:#f5c217;flex:0 0 auto;box-shadow:0 1px 0 #f9d962;}
+.id-barcode {width:79%;height:29px;flex:0 0 auto;margin-top:7px;background:repeating-linear-gradient(90deg,#142a50 0px,#142a50 2px,#eff4ff 2px,#eff4ff 3px,#142a50 3px,#142a50 4px,#eff4ff 4px,#eff4ff 7px,#142a50 7px,#142a50 11px,#eff4ff 11px,#eff4ff 13px);}
+/* Full-bleed identity card artwork: match the supplied close-up at every badge width.
+   Proportion-based positions keep the photo, name, divider, and barcode stable. */
+.id-paper { isolation:isolate; }
+.id-school-heading {
+  position:absolute;
+  top:2.2%;
+  left:0;
+  width:100%;
+  margin:0;
+  padding-inline:4px;
+}
+.id-school-heading strong {
+  font-size:clamp(11px,1.03vw,15px);
+  line-height:1.03;
+  letter-spacing:-.05em;
+}
+.id-school-heading span { font-size:clamp(6px,.52vw,8px); margin-top:2px; }
+.id-gallery {
+  position:absolute;
+  top:13.4%;
+  left:50%;
+  transform:translateX(-50%);
+  width:58%;
+  aspect-ratio:1.02;
+  margin:0;
+  border:2px solid #254c86;
+  box-shadow:0 0 0 1px #f8fbffdb,0 2px 5px #071b3d4b;
+}
+.id-portrait-image { object-position:center 21%; }
+.id-student-details {
+  position:absolute;
+  top:63%;
+  left:0;
+  width:100%;
+  margin:0;
+  gap:3px;
+}
+.id-student-details strong {
+  font:700 clamp(10px,.94vw,14px)/1.12 Arial,sans-serif;
+  letter-spacing:-.04em;
+}
+.id-student-details span { font:700 clamp(8px,.65vw,10px)/1.12 Arial,sans-serif; }
+.id-student-details span:last-child { font-size:clamp(9px,.78vw,12px); margin-top:1px; }
+.id-gold-divider {
+  position:absolute;
+  left:3%;
+  bottom:16%;
+  width:94%;
+  height:5px;
+  margin:0;
+  border-radius:0;
+  box-shadow:0 1px 0 #ffe17c;
+}
+.id-barcode {
+  position:absolute;
+  bottom:3%;
+  left:10%;
+  width:80%;
+  height:10%;
+  max-height:34px;
+  margin:0;
+  background:repeating-linear-gradient(90deg,
+    #102851 0 2px,#e5efff 2px 3px,#102851 3px 4px,#e5efff 4px 7px,
+    #102851 7px 11px,#e5efff 11px 13px);
+}
+/* Responsive type is scaled to the smaller physical ID without clipping. */
+@media (max-width:1100px) {
+  .id-school-heading strong { font-size:12px; }
+  .id-school-heading span { font-size:7px; }
+  .id-student-details strong { font-size:11px; }
+  .id-student-details span { font-size:8px; }
+  .id-student-details span:last-child { font-size:10px; }
+}
+.lanyard-instruction {display:block;position:absolute;width:max-content;top:calc(100% + 9px);left:50%;transform:translateX(-50%);color:#ddd9e1c7;font:9px/1.5 Arial,sans-serif;letter-spacing:.045em;pointer-events:none;}
+.introduction-panel { grid-column:2; width: 100%; max-width: 610px; padding: clamp(25px,3vw,48px); align-self: center; color: #fff; background: rgba(151,148,164,.49); border-radius: clamp(25px,3vw,43px); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(222,220,233,.17); box-shadow: 0 15px 45px rgba(10,4,26,.15); }
+.eyebrow { display: inline-block; font: 11px/1.4 'Julius Sans One', sans-serif; letter-spacing:.18em; color:#d9c1f7; text-transform:uppercase; }
+.introduction-panel p { font: 400 clamp(18px,1.8vw,26px)/1.24 'Londrina Solid',sans-serif; letter-spacing: .014em; margin: 0; }
+.hero-kicker { display: block; margin-bottom: 14px; color: #eee0ff; font: 11px/1.4 'Julius Sans One',sans-serif; letter-spacing: .18em; }
+.hero-intro-title { margin: 0 0 22px; color: #fff; font: 400 clamp(34px,3.4vw,50px)/1.12 'Lora',serif; letter-spacing: -.04em; }
+.hero-intro-title em { color: #dcc2ff; font-weight: 400; }
+.introduction-panel strong { font-weight: 700; }
+.text-link { color: #e6d8ff; font: 12px 'Julius Sans One',sans-serif; text-decoration: none; display:inline-flex; align-items:center; gap:10px; letter-spacing:.09em; border-bottom:1px solid rgba(225,200,255,.3); padding-bottom:7px; }
+.text-link svg,.about-actions svg { width:18px;height:18px;transition: transform .25s; }
+.text-link:hover svg,.about-actions a:hover svg { transform:translateX(5px); }
+
+/* Homepage final section — personal info; does not merge academic content into homepage. */
+.about { min-height: 100svh; width: 100%; padding: clamp(60px,10vh,120px) clamp(24px,7vw,140px); position: relative; display: flex; flex-direction: column; justify-content: center; background: radial-gradient(circle at 85% 20%,rgba(35,23,91,.22),transparent 34%),#17141d; overflow: hidden; }
+.about-accent { position:absolute;width:290px;height:290px;border:2px solid #2410a5;border-radius:50%; opacity:.85; transform:skewX(-20deg) rotate(22deg);pointer-events:none; }
+.about-accent-one { right:-100px;top:-100px; }
+.about-accent-two { bottom:-185px; left:22%; }
+.section-heading { position:relative;z-index:1;text-align:center;max-width:700px;margin:0 auto 46px; }
+.section-heading h2 { font: 600 clamp(37px,4.8vw,64px)/1.07 'Lora',serif; letter-spacing:-.04em; margin:13px 0; }
+.section-heading h2 span,.about h2 span { color: #a77cfd; }
+.section-heading p {font: 16px/1.6 'Lora',serif; color: #c6bed0; margin:0; }
+.about-grid { position: relative; z-index: 1; width: 100%; max-width: 1360px; margin: auto; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(16px,2vw,32px); }
+.about-tile { position: relative; overflow: hidden; border: 1px solid rgba(196,189,215,.19); min-height: clamp(300px,34vh,430px); padding: 26px 25px; border-radius: 30px; background: rgba(140,136,154,.48); box-shadow: 0 18px 40px rgba(0,0,0,.18); }
+.tile-label { font: 10px 'Julius Sans One',sans-serif;letter-spacing:.16em;color:#c7b9d5; }
+.about-tile h3 { margin: 46px 0 0; font: clamp(24px,2.1vw,36px)/1.25 'Julius Sans One',sans-serif; letter-spacing: -.02em; }
+.about-tile-date strong {font-size:20px;font-weight:400;}
+.tile-decoration { position:absolute;bottom:14px;right:18px;font-size:42px;color:#a46bec; }
+.about-tile-age h3 {font:25px/1.4 'Kavivanar',cursive; margin:34px 0 0; position:relative; z-index:2; }
+.about-tile-age h3 em {font:600 54px 'Lora',serif; }
+.age-outline {position:absolute;bottom:-28px;right:15px;font:700 170px 'Lora',serif;color:transparent;-webkit-text-stroke:1px rgba(224,199,255,.23); }
+.creative-emoji {font-size:82px;color:#d4baff;text-align:center;margin:15px auto 0; }
+.about-tile-creative p {font: 16px/1.35 'Lora',serif;text-align:center;margin:0; }
+.about-actions { position:relative;z-index:1;display:flex;gap:22px;justify-content:center;flex-wrap:wrap;margin-top:35px; }
+.about-actions a {padding:12px 22px;min-width:160px;border-radius:50px;background:rgba(161,157,172,.25);display:inline-flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;font:13px 'Julius Sans One',sans-serif;transition:background .2s; }
+.about-actions a:hover {background:rgba(147,108,203,.35);}
+
+/* Separate academic compilation page */
+/* Start at the actual schoolwork gallery, with the first heading below the fixed glass header. */
+.schoolworks { width: 100%; margin: 0; min-height: 100svh; padding: calc(var(--nav-height) + 48px) max(6vw,22px) 100px; }
+.section-heading--left{text-align:left;margin:0 0 47px;}
+.work-gallery { max-width: 1500px; margin: auto; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; align-items: stretch; }
+.work-placeholder {min-height:350px;margin:0;border-radius:16px;border:1px solid rgba(190,177,220,.26);background:radial-gradient(circle at 74% 35%,rgba(108,76,166,.13),transparent 54%),#191423;position:relative;overflow:hidden;display:grid;place-items:center;}
+.work-placeholder.wide {grid-column:span 2;min-height:350px;}
+.work-placeholder.tall {min-height:500px;}
+.work-placeholder:before {content:'';position:absolute;inset:16px;border:1px dashed rgba(188,171,218,.25);border-radius:10px;pointer-events:none;}
+.work-placeholder-inner {display:grid;justify-items:center;gap:13px;padding:40px;text-align:center;max-width:320px;}
+.placeholder-cross {font:47px 'Lora',serif;color:#a68ace;}
+.placeholder-number {font:12px 'Julius Sans One',sans-serif;color:#a995ca;letter-spacing:.15em;}
+.work-placeholder strong {font:500 23px/1.25 'Lora',serif;}
+.work-placeholder-inner>span:last-child{font:12px 'Julius Sans One',sans-serif;color:#a99db5;}
+.reflections { width: 100%; margin: 0; min-height: 100svh; position: relative; isolation: isolate; background: #130c22; }
+.reflections>.jelly-bg::after { background: linear-gradient(180deg,rgba(11,5,25,.24),rgba(11,5,25,.08) 65%,rgba(11,5,25,.36)); }
+.reflections-content { position: relative; max-width: 1600px; margin: auto; padding: clamp(65px,10vh,120px) 5vw; }
+.reflections .section-heading{margin-bottom:42px;}
+.reflection-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(18px,2.5vw,40px); align-items: stretch; }
+.reflection-card { display: flex; flex-direction: column; }
+.reflection-card h3 { font: 400 clamp(24px,2.4vw,31px)/1.5 'Kumar One',serif; margin: 0 0 14px; text-shadow: 0 1px 5px rgba(0,0,0,.3); }
+.reflection-glass { flex: 1; min-height: clamp(360px,49vh,520px); border-radius: 32px; padding: 24px 22px 42px; position: relative; background: rgba(158,158,172,.45); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(224,214,239,.19); box-shadow: 0 10px 25px rgba(7,5,14,.17); }
+.reflection-glass p { font: 400 clamp(16px,1.5vw,22px)/1.24 'Londrina Solid',sans-serif; margin: 0; letter-spacing: .01em; text-shadow: 0 1px 3px rgba(0,0,0,.14); }
+.reflection-doodle{position:absolute;right:15px;bottom:7px;font:40px 'Lora',serif;color:rgba(35,32,59,.48);}
+
+/* Separate extracurricular achievements page */
+.achievements-main { width: 100%; margin: 0; min-height: 100svh; position: relative; overflow: hidden; background: linear-gradient(180deg,#202020 0%,#3a2450 32%,#723c91 70%,#1f0d2a 100%); }
+.achievement-spark {position:absolute;font-size:400px;right:-180px;top:-190px;color:rgba(224,191,255,.07);pointer-events:none;}
+/* Content-first Achievements, with its original introduction condensed into the section. */
+.certificate-section { max-width: 1500px; margin: auto; padding: calc(var(--nav-height) + 48px) clamp(30px,6vw,90px) 110px; position: relative; }
+.certificate-section .achievement-overview { max-width: 840px; color: #eee5f5; font: 400 clamp(16px,1.65vw,21px)/1.5 'Lora',serif; margin: 18px 0 12px; }
+.certificate-section .collection-note { max-width: 790px; color: #cbbdd8; font: 400 14px/1.5 'Lora',serif; margin: 0; }
+.certificate-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;}
+.certificate-grid .work-placeholder{min-height:310px;background:rgba(24,13,36,.3);}
+.certificate-grid .work-placeholder.tall{min-height:450px;}
+.pdf-button {display:flex;align-items:center;gap:35px;padding:20px 28px;background:#f3f1f5;color:#1b1526;border:none;border-radius:5px;margin:55px auto 0;font:28px 'Londrina Solid',sans-serif;text-transform:lowercase;opacity:.7;cursor:not-allowed;}
+.pdf-button span{font:10px 'Julius Sans One',sans-serif;letter-spacing:.04em;}
+
+/* Photo preview (3D expanding/tilting) */
+
+/* ReactDrops-inspired anonymous pink cursor */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) { body.has-custom-pointer, .has-custom-pointer a, .has-custom-pointer button { cursor: none; } }
+.showcase-pointer{position:fixed;left:0;top:0;width:28px;height:33px;z-index:4100;pointer-events:none;opacity:0;filter:drop-shadow(0 2px 5px rgba(230,36,178,.6));transition:opacity .12s ease,filter .2s ease;will-change:transform;}
+.showcase-pointer.visible{opacity:1;}
+.showcase-pointer svg{width:100%;height:100%;display:block;}
+.showcase-pointer.hovered{filter:drop-shadow(0 0 8px #e75ee0) drop-shadow(0 0 5px #ed9be3);}
+.showcase-pointer.pressed svg{scale:.83;}
+
+
+/* Use a natural column flow when a compact fan and side quote no longer fit. */
+@media (max-width: 1100px) {
+  .hero-content { gap: 65px; padding-inline: 48px; grid-template-columns: minmax(260px,.9fr) minmax(290px,1.1fr); }
+  .lanyard { width: 198px; }
+}
+@media (max-width: 960px) {
+  /* Keep wide footage at viewport scale behind long mobile content. */
+  .hero, .reflections { display: grid; grid-template-columns: minmax(0,1fr); }
+  .hero > .jelly-bg, .reflections > .jelly-bg { grid-area: 1 / 1; position: sticky; top: var(--nav-height); align-self: start; height: calc(100svh - var(--nav-height)); }
+  .hero-content, .reflections-content { grid-area: 1 / 1; width: 100%; min-width: 0; }
+  .hero-content { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 34px; padding: 120px 28px 60px; }
+  .lanyard { position:relative; inset:auto; width: 198px; margin:0; transform:none; }
+  .hero-content { padding-top: 185px; }
+  .introduction-panel { max-width: 600px; }
+  .introduction-panel p { font-size: 22px; }
+  .about { padding: 65px 5vw; }
+  .about-grid { grid-template-columns: 1fr; max-width: 600px; gap: 18px; }
+  .about-tile { min-height: 200px; }
+  .about-tile h3 { margin-top: 24px; }
+  .reflection-grid { grid-template-columns: 1fr; gap: 32px; max-width: 650px; margin: auto; }
+  .reflection-card h3 { min-height: 0; font-size: 26px; }
+  .reflection-glass { min-height: 0; padding: 24px 24px 42px; }
+  .reflection-glass p { font-size: 20px; line-height: 1.3; }
+}
+@media (max-width: 720px) {
+  .hero-content { gap: 28px; padding: 112px 22px 50px; }
+  .lanyard { width: clamp(180px,48vw,198px); }
+  .lanyard-strap { height: 230px; }
+  .lanyard-strap-side { height: 158px; }
+  .lanyard-strap-side span { font-size: 7px; letter-spacing: -.02em; }
+  .lanyard-buckle { top: 148px; }
+  .lanyard-clip { top: 187px; }
+  .id-school-heading strong { font-size: 12px; }
+  .id-student-details strong { font-size: 11px; }
+  .introduction-panel { padding: 25px 23px; }
+  .introduction-panel p { font-size: clamp(18px,4.6vw,23px); }
+  .about { padding: 65px 22px; }
+  .about-tile { min-height: 180px; }
+  .about-actions { gap: 10px; margin-top: 22px; }
+  .about-actions a { width: 100%; max-width: 600px; }
+  .schoolworks { padding: calc(var(--nav-height) + 36px) 17px 65px; }
+  .work-gallery, .certificate-grid { grid-template-columns: 1fr; gap: 13px; }
+  .work-placeholder, .work-placeholder.tall, .certificate-grid .work-placeholder.tall { min-height: 270px; }
+  .work-placeholder.wide { grid-column: auto; min-height: 270px; }
+  .work-placeholder-inner { padding: 30px; }
+  .reflections-content { padding: 70px 20px; }
+  .reflection-card h3 { font-size: 24px; line-height: 1.45; }
+  .reflection-glass { padding: 22px 20px 42px; }
+  .reflection-glass p { font-size: 18px; }
+  .certificate-section { padding: calc(var(--nav-height) + 36px) 18px 90px; }
+  .certificate-section .achievement-overview { font-size: 16px; }
+  .footer { flex-direction: column; align-items: center; text-align: center; }
+}
+@media (max-width: 390px) {
+  .hero-content { padding-inline: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; scroll-behavior: auto !important; transition: none !important; }
+  .jelly-video { display: none; }
+  .showcase-pointer { display: none; }
+  body, a, button { cursor: auto; }
+}
+
+
+/* Interactive, hanging ID inspired by the supplied playable lanyard reference.
+   The quote bubble remains anchored while the three-photo ID swings. */
+.lanyard-swing {
+  position: relative;
+  width: 100%;
+  transform-origin: 50% -325px;
+  transform: rotate(var(--id-angle, 0deg));
+  animation: none;
+  will-change: transform;
+  touch-action: pan-y;
+  cursor: grab;
+}
+.lanyard-swing.is-interacting {
+  transform: rotate(var(--id-angle, 0deg));
+}
+.lanyard-swing.is-grabbed { cursor: grabbing; }
+.lanyard-swing.is-grabbed .id-panel {
+  box-shadow: 0 28px 45px rgba(0,0,0,.48), inset 0 1px 4px rgba(255,255,255,.3);
+}
+@media (max-width: 720px) {
+  .lanyard-swing { transform-origin: 50% -210px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lanyard-swing, .lanyard-swing.is-interacting {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* Click-to-enlarge ID portraits. Keep the ID draggable everywhere except its photo. */
+.id-portrait {
+  display: block;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #a5b8d7;
+  appearance: none;
+  cursor: zoom-in;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.id-portrait:focus-visible {
+  outline: 3px solid #dbbbff;
+  outline-offset: 4px;
+}
+.id-portrait:hover::after,
+.id-portrait:focus-visible::after {
+  content: 'VIEW PHOTO';
+  position: absolute;
+  inset: auto 0 0;
+  padding: 7px 4px;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(7, 5, 22, .75));
+  text-align: center;
+  font: 600 9px/1.3 system-ui, sans-serif;
+  letter-spacing: .1em;
+  pointer-events: none;
+}
+body.id-photo-viewer-open { overflow: hidden; }
+/* Keep the custom pink pointer visible above the photo viewer (z-index: 3000).
+   Hide native hover cursors on every element inside that viewer to prevent a double cursor. */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body.has-custom-pointer.id-photo-viewer-open .id-photo-viewer,
+  body.has-custom-pointer.id-photo-viewer-open .id-photo-viewer * {
+    cursor: none !important;
+  }
+  body.has-custom-pointer.id-photo-viewer-open .showcase-pointer {
+    z-index: 4100;
+  }
+}
+
+.id-photo-viewer {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(14px, 3vw, 48px);
+  background: rgba(5, 3, 16, .91);
+  -webkit-backdrop-filter: blur(22px) saturate(125%);
+  backdrop-filter: blur(22px) saturate(125%);
+}
+.id-photo-viewer-dialog {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 880px);
+  max-height: min(100%, 920px);
+  min-height: 0;
+  color: #f8f3ff;
+  border: 1px solid rgba(215, 187, 255, .28);
+  border-radius: 19px;
+  background: linear-gradient(160deg, rgba(32, 21, 58, .95), rgba(11, 12, 31, .97));
+  box-shadow: 0 36px 110px rgba(0, 0, 0, .56);
+  overflow: hidden;
+}
+.id-photo-viewer-toolbar,
+.id-photo-viewer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px clamp(17px, 3vw, 28px);
+}
+.id-photo-viewer-toolbar { border-bottom: 1px solid rgba(220, 195, 255, .18); }
+.id-photo-viewer-footer { border-top: 1px solid rgba(220, 195, 255, .18); }
+.id-photo-viewer-title,
+.id-photo-viewer-count {
+  color: #d7baf3;
+  font: 600 11px/1.3 system-ui, sans-serif;
+  letter-spacing: .13em;
+}
+.id-photo-viewer-caption {
+  font: 400 clamp(12px, 1.5vw, 15px)/1.4 system-ui, sans-serif;
+}
+.id-photo-viewer-toolbar button,
+.id-photo-viewer-stage button {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: rgba(129, 78, 180, .25);
+  color: #fff;
+  border: 1px solid rgba(227, 210, 255, .25);
+  cursor: pointer;
+}
+.id-photo-viewer-toolbar button:hover,
+.id-photo-viewer-stage button:hover {
+  background: rgba(162, 105, 223, .48);
+}
+.id-photo-viewer-toolbar button:focus-visible,
+.id-photo-viewer-stage button:focus-visible {
+  outline: 2px solid #e9c8ff;
+  outline-offset: 3px;
+}
+.id-photo-viewer-close {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 18px;
+}
+.id-photo-viewer-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  flex: 1 1 auto;
+  padding: 12px 68px;
+}
+.id-photo-viewer-image {
+  display: block;
+  max-width: 100%;
+  max-height: min(70svh, 740px);
+  width: auto;
+  height: auto;
+  min-width: 0;
+  object-fit: contain;
+  border-radius: 7px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, .35);
+  user-select: none;
+}
+.id-photo-viewer-prev,
+.id-photo-viewer-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 50px;
+  border-radius: 12px;
+  font-size: 35px;
+  font-weight: 300;
+}
+.id-photo-viewer-prev { left: 14px; }
+.id-photo-viewer-next { right: 14px; }
+@media (max-width: 600px) {
+  .id-photo-viewer { padding: 10px; }
+  .id-photo-viewer-dialog { border-radius: 12px; max-height: 94svh; }
+  .id-photo-viewer-stage { padding: 10px 44px; }
+  .id-photo-viewer-image { max-height: 67svh; }
+  .id-photo-viewer-prev, .id-photo-viewer-next { width: 34px; height: 43px; border-radius: 9px; font-size: 28px; }
+  .id-photo-viewer-prev { left: 5px; }
+  .id-photo-viewer-next { right: 5px; }
+  .id-photo-viewer-title { font-size: 9px; }
+  .id-photo-viewer-footer { gap: 12px; }
+}
+
+/* The ID and both lanyard bands are genuinely attached to the bottom of the navbar.
+   On narrow viewports use a fixed start height within the stacked hero.
+   Desktop uses a measured --lanyard-anchor-shift (app.js), independent of hero text height. */
+@media (max-width: 960px) {
+  body[data-page="home"] .hero-content {
+    justify-content: flex-start;
+    padding-top: calc(var(--nav-height) + 330px);
+  }
+  body[data-page="home"] .lanyard { margin: 0; }
+}
+@media (max-width: 720px) {
+  body[data-page="home"] .hero-content {
+    padding-top: calc(var(--nav-height) + 210px);
+  }
+  .lanyard-swing { transform-origin: 50% -210px; }
+}
+
+/* New jellyfish poster for the home hero only. Reflections retain the original media. */
+.hero > .jelly-bg { background-image: url('assets/jellyfish-hero-hq-poster.webp?v=2.7.0'); }
+
+/* Preserve the uploaded video's luminous blues without the old heavy dark wash. */
+.hero > .jelly-bg::after { background: linear-gradient(180deg, rgba(5,5,20,.025), transparent 65%, rgba(12,5,25,.12)); }

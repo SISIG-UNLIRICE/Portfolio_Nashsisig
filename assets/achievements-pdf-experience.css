@@ -1,0 +1,105 @@
+/* Nash Tolin / PDF interaction — reference-inspired, scoped to Achievements only. */
+body[data-page="achievements"] .capstone-open-archive {
+  position:relative; overflow:hidden; display:inline-flex; align-items:center; gap:14px;
+  transition:background .25s ease, transform .25s ease;
+}
+body[data-page="achievements"] .capstone-open-archive svg {transition:transform .25s ease;flex:none}
+body[data-page="achievements"] .capstone-open-archive:hover svg {transform:translate(2px,-2px)}
+body[data-page="achievements"] .nash-pdf-preview {
+  display:block;position:relative;isolation:isolate;width:100%;height:clamp(245px,22vw,340px);
+  margin-top:34px;overflow:hidden;border-radius:6px;text-decoration:none;
+  border:1px solid rgba(225,196,255,.28);background:#250b40;
+  box-shadow:0 24px 65px rgba(0,0,0,.26);
+}
+body[data-page="achievements"] .nash-pdf-preview:focus-visible {outline:3px solid #34d3eb;outline-offset:5px}
+.nash-pdf-preview-art {
+  position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;
+  overflow:hidden;padding:clamp(20px,3vw,38px);
+  background: radial-gradient(ellipse at 69% 57%,rgba(184,130,248,.54),transparent 38%),
+              radial-gradient(ellipse at 11% 115%,rgba(74,18,125,.8),transparent 55%),
+              linear-gradient(115deg,#2e1247 8%,#54317e 57%,#141533 100%);
+  transition:transform .6s cubic-bezier(.18,.8,.2,1),filter .6s ease;
+}
+.nash-pdf-preview-art::after {
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.34;
+  background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);
+  background-size:41px 41px;mask-image:linear-gradient(90deg,transparent,black);
+}
+.nash-pdf-preview-orbit {position:absolute;pointer-events:none; border:1px solid rgba(249,224,255,.35);border-radius:50%;transform:rotate(-24deg)}
+.nash-pdf-preview-orbit-one{width:600px;height:240px;left:34%;top:7%}
+.nash-pdf-preview-orbit-two{width:440px;height:190px;left:40%;top:33%;border-width:2px;opacity:.6}
+.nash-pdf-preview-index,.nash-pdf-preview-meta,.nash-pdf-preview-wordmark{z-index:1;position:relative}
+.nash-pdf-preview-index,.nash-pdf-preview-meta {font:650 10px/1.4 system-ui,sans-serif;letter-spacing:.13em;color:#efe0ff}
+.nash-pdf-preview-wordmark {font:850 clamp(39px,4.5vw,76px)/.91 Arial,Helvetica,sans-serif;letter-spacing:-.075em;color:#fff;max-width:90%}
+.nash-pdf-preview-wordmark em {font-style:normal;color:#d9bafc}
+.nash-pdf-preview-meta {display:flex;justify-content:space-between;align-items:flex-end;gap:12px;color:#ead9fb}
+.nash-pdf-preview-float {
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.87);
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;min-width:120px;
+  padding:16px 18px;background:#33d0eb;color:#0d1831;
+  z-index:4;pointer-events:none;white-space:nowrap;
+  font:750 11px/1 system-ui,sans-serif;letter-spacing:.05em;
+  opacity:0;transition:opacity .2s ease,transform .2s ease;box-shadow:0 6px 25px rgba(13,0,30,.22);
+}
+.nash-pdf-preview:hover .nash-pdf-preview-art,.nash-pdf-preview:focus-visible .nash-pdf-preview-art{transform:scale(1.025);filter:saturate(1.13)}
+.nash-pdf-preview.is-hovering .nash-pdf-preview-float {opacity:1;transform:translate(-50%,-50%) scale(1)}
+.nash-pdf-preview:focus-visible .nash-pdf-preview-float {opacity:1;left:50%!important;top:50%!important;transform:translate(-50%,-50%) scale(1)}
+
+/* White editorial document viewer — intentionally mirrors the supplied recording. */
+.nash-pdf-dialog {
+  width:min(960px,96vw);height:min(95dvh,1040px);max-width:none;max-height:none;
+  padding:0;margin:auto;border:0;border-radius:3px;background:#f7f7f7;color:#111;
+  box-shadow:0 38px 130px rgba(0,0,0,.48);overflow:hidden;
+}
+.nash-pdf-dialog::backdrop {background:rgba(5,6,12,.78);backdrop-filter:blur(10px)}
+.nash-pdf-dialog-inner{display:flex;flex-direction:column;height:100%;min-height:0;position:relative}
+.nash-pdf-close {
+  position:absolute;top:13px;right:13px;width:34px;height:34px;z-index:5;
+  display:grid;place-items:center;border:1px solid #ddd;border-radius:50%;color:#1a1a1a;
+  background:#fafafa;cursor:pointer;
+  transition:transform .2s ease,background .2s ease;
+}
+.nash-pdf-close:hover{background:#e8e8e8;transform:rotate(90deg)}
+.nash-pdf-close:focus-visible{outline:2px solid #111;outline-offset:2px}
+.nash-pdf-heading{padding:clamp(24px,4vw,42px) clamp(20px,4vw,46px) 20px;flex:none}
+.nash-pdf-eyebrow{display:block;font:700 10px/1.4 Arial,sans-serif;letter-spacing:.13em;color:#444;margin-bottom:22px}
+.nash-pdf-heading h2{font:500 clamp(27px,3.25vw,43px)/1.09 Arial,Helvetica,sans-serif;letter-spacing:-.057em;max-width:710px;margin:0 28px 15px 0;color:#0d0e11}
+.nash-pdf-heading p{font:400 clamp(12px,1.1vw,14px)/1.65 Arial,Helvetica,sans-serif;color:#7e7e7e;max-width:610px;margin:0}
+.nash-pdf-embed-shell{position:relative;display:flex;flex:1;min-height:190px;margin:0 clamp(20px,4vw,46px);background:#252525;overflow:hidden}
+.nash-pdf-embed{width:100%;height:100%;border:0;min-height:0;display:block;background:#252525}
+.nash-pdf-embed-loading{position:absolute;inset:0;display:flex;justify-content:center;align-items:center;background:#292929;color:#bdbdbd;pointer-events:none;font:500 12px/1.5 Arial,sans-serif;letter-spacing:.04em}
+.nash-pdf-embed-loading[hidden]{display:none}
+.nash-pdf-dialog-footer{display:flex;align-items:center;gap:clamp(10px,2vw,24px);flex:none;flex-wrap:wrap;padding:16px clamp(20px,4vw,46px) clamp(20px,2.5vw,28px)}
+.nash-pdf-dialog-footer a{display:inline-flex;align-items:center;gap:9px;text-decoration:none;font:600 12px/1.2 Arial,Helvetica,sans-serif;white-space:nowrap;cursor:pointer}
+.nash-pdf-download{padding:12px 17px;background:#111;border-radius:999px;color:#fff!important}
+.nash-pdf-download:hover{background:#353535}
+.nash-pdf-open-new{color:#111!important;border-bottom:1px solid #999;padding:9px 0}
+.nash-pdf-open-new:hover{border-color:#111}
+.nash-pdf-footnote{margin-left:auto;font:500 10px/1.5 Arial,sans-serif;color:#8d8d8d;white-space:nowrap}
+/* Native PDF controls inside cross-origin browser viewers need a genuine system pointer.
+   Hide the bespoke pointer while the PDF is open to prevent the frozen/double-cursor issue. */
+body.nash-pdf-open .showcase-pointer{visibility:hidden!important;opacity:0!important}
+body.has-custom-pointer.nash-pdf-open .nash-pdf-dialog,
+body.has-custom-pointer.nash-pdf-open .nash-pdf-dialog * {cursor:auto!important}
+body.has-custom-pointer.nash-pdf-open .nash-pdf-dialog button,
+body.has-custom-pointer.nash-pdf-open .nash-pdf-dialog a {cursor:pointer!important}
+@media (max-width:720px) {
+  .nash-pdf-dialog{width:100vw;height:100dvh;border-radius:0}
+  .nash-pdf-heading{padding:32px 19px 20px}
+  .nash-pdf-eyebrow{margin-bottom:15px;font-size:9px}
+  .nash-pdf-heading h2{font-size:clamp(24px,6.4vw,36px);max-width:92%}
+  .nash-pdf-heading p{font-size:12px}
+  .nash-pdf-embed-shell{margin:0 12px;min-height:180px}
+  .nash-pdf-dialog-footer{padding:13px 15px 20px;gap:9px 15px}
+  .nash-pdf-footnote{width:100%;margin-left:0}
+  body[data-page="achievements"] .nash-pdf-preview{height:255px}
+  .nash-pdf-preview-wordmark{font-size:clamp(42px,10vw,67px)}
+  .nash-pdf-preview-float{left:50%!important;top:50%!important;opacity:1;transform:translate(-50%,-50%) scale(1)}
+}
+@media (hover:none),(pointer:coarse) {
+ .nash-pdf-preview-float{left:50%!important;top:50%!important;opacity:1;transform:translate(-50%,-50%) scale(1)}
+}
+@media(prefers-reduced-motion:reduce){
+ .nash-pdf-preview-art,.nash-pdf-preview-float,.nash-pdf-close,.capstone-open-archive svg{transition:none!important;animation:none!important}
+ .nash-pdf-preview-float{left:50%!important;top:50%!important;opacity:1;transform:translate(-50%,-50%) scale(1)}
+}

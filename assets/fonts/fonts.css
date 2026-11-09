@@ -1,0 +1,57 @@
+/* Original portfolio typefaces, self-hosted from google/fonts under OFL 1.1. */
+@font-face {
+  font-family: 'Megrim';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('Megrim.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Londrina Solid';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('LondrinaSolid-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Londrina Solid';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('LondrinaSolid-Black.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('Lora-Variable.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Lora';
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('Lora-Italic-Variable.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Kavivanar';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('Kavivanar-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Kumar One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('KumarOne-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Julius Sans One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('JuliusSansOne-Regular.ttf') format('truetype');
+}

@@ -1,0 +1,134 @@
+/* Scoped Academics gallery enhancements; original homepage and student ID untouched. */
+body[data-page="academics"] .play-gallery {align-items:start}
+body[data-page="academics"] .play-project-visual--original{
+  background:linear-gradient(140deg,#141d37,#180c30 80%);
+  box-shadow:0 20px 70px rgba(0,0,0,.35),0 0 0 1px rgba(192,175,238,.10);
+  border:1px solid rgba(207,191,246,.31);
+  border-radius:clamp(8px,1vw,15px);overflow:hidden
+}
+body[data-page="academics"] .academic-image-portrait .play-project-visual--original{aspect-ratio:.86}
+body[data-page="academics"] .academic-image-button{
+  display:grid;place-items:center;position:relative;width:100%;height:100%;
+  padding:clamp(15px,3vw,38px);border:0;border-radius:inherit;
+  background:radial-gradient(circle at 65% 16%,rgba(115,82,184,.22),transparent 63%);
+  color:inherit;cursor:zoom-in;isolation:isolate
+}
+body[data-page="academics"] .academic-work-image{
+  display:block;max-width:100%;max-height:100%;width:auto;height:auto;
+  object-fit:contain;object-position:center;box-shadow:0 7px 28px rgba(0,0,0,.42);
+  transition:transform .55s cubic-bezier(.2,.8,.2,1)
+}
+body[data-page="academics"] .academic-image-button:hover .academic-work-image,
+body[data-page="academics"] .academic-image-button:focus-visible .academic-work-image{transform:scale(1.035)}
+body[data-page="academics"] .academic-image-hint{
+  position:absolute;right:14px;bottom:14px;background:rgba(12,8,28,.84);
+  border:1px solid rgba(239,225,255,.28);color:#eee3ff;padding:9px 13px;border-radius:99px;
+  font:700 10px/1.2 system-ui,sans-serif;letter-spacing:.1em;
+  opacity:0;transform:translateY(5px);pointer-events:none;
+  transition:opacity .25s ease,transform .25s ease
+}
+body[data-page="academics"] .academic-image-button:hover .academic-image-hint,
+body[data-page="academics"] .academic-image-button:focus-visible .academic-image-hint{opacity:1;transform:none}
+body[data-page="academics"] .play-project-caption{align-items:flex-start}
+body[data-page="academics"] .play-project-caption span{
+  font-size:10px;letter-spacing:.09em;text-transform:uppercase
+}
+body[data-page="academics"] .academic-image-button:focus-visible{outline:3px solid #bd9bfa;outline-offset:-5px}
+.academic-viewer{
+  padding:0;margin:auto;width:min(1130px,96vw);max-width:none;max-height:94dvh;
+  border:1px solid rgba(218,191,255,.32);border-radius:16px;
+  background:#100b20;color:#f8f3ff;box-shadow:0 28px 130px rgba(0,0,0,.7);overflow:hidden
+}
+.academic-viewer::backdrop{background:rgba(1,1,11,.88);backdrop-filter:blur(13px)}
+.academic-viewer-panel{display:flex;flex-direction:column;width:100%;max-height:94dvh}
+.academic-viewer-top,.academic-viewer-bottom{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  flex-shrink:0;padding:15px clamp(17px,2vw,28px)
+}
+.academic-viewer-top{border-bottom:1px solid rgba(227,207,255,.16)}
+.academic-viewer-eyebrow{font:700 11px/1.4 system-ui,sans-serif;letter-spacing:.16em;color:#c6acf6}
+.academic-viewer-close,.academic-viewer-previous,.academic-viewer-next{
+  cursor:pointer;border:1px solid rgba(222,198,255,.22);color:#fff;background:#26163e;
+  border-radius:50%;display:grid;place-items:center;flex-shrink:0
+}
+.academic-viewer-close{height:36px;width:36px;font:20px/1 system-ui,sans-serif}
+.academic-viewer-stage{
+  position:relative;display:flex;align-items:center;justify-content:center;
+  min-height:150px;overflow:hidden;flex:1 1 auto;
+  background:radial-gradient(circle at 50% 30%,#242044,#0b0d19 75%);padding:14px 70px
+}
+.academic-viewer-image{
+  display:block;object-fit:contain;max-width:100%;max-height:min(69dvh,740px);
+  width:auto;height:auto;box-shadow:0 13px 40px rgba(0,0,0,.32)
+}
+.academic-viewer-previous,.academic-viewer-next{
+  position:absolute;z-index:2;top:50%;transform:translateY(-50%);
+  width:43px;height:43px;font:32px/1 Arial,sans-serif
+}
+.academic-viewer-previous{left:14px}.academic-viewer-next{right:14px}
+.academic-viewer-close:hover,.academic-viewer-previous:hover,.academic-viewer-next:hover{background:#593f83}
+.academic-viewer-bottom{border-top:1px solid rgba(227,207,255,.16);align-items:flex-start}
+.academic-viewer-title{display:block;font:700 clamp(15px,1.5vw,19px)/1.3 system-ui,sans-serif}
+.academic-viewer-desc{margin:5px 0 0;color:#c5b7d8;font:400 12px/1.45 system-ui,sans-serif}
+.academic-viewer-count{white-space:nowrap;font:650 12px/1.5 system-ui,sans-serif;color:#c7b0f1}
+@media(max-width:720px){
+  body[data-page="academics"] .play-project-visual--original,
+  body[data-page="academics"] .academic-image-portrait .play-project-visual--original{aspect-ratio:1.1}
+  body[data-page="academics"] .academic-image-hint{opacity:1;transform:none}
+  .academic-viewer{width:100vw;max-height:100dvh;border-radius:0}
+  .academic-viewer-panel{height:100dvh;max-height:100dvh}
+  .academic-viewer-stage{padding:10px 48px}
+  .academic-viewer-image{max-height:75dvh}
+  .academic-viewer-previous,.academic-viewer-next{width:36px;height:36px;font-size:25px}
+  .academic-viewer-previous{left:5px}.academic-viewer-next{right:5px}
+}
+@media(prefers-reduced-motion:reduce){
+  body[data-page="academics"] .academic-work-image,
+  body[data-page="academics"] .academic-image-hint{transition:none!important;transform:none!important}
+}
+
+
+/* Keep Nash's original pink cursor visible inside the native <dialog>.
+   showModal() puts the dialog in the browser top layer, so the JavaScript
+   temporarily moves the existing pointer element inside this dialog.
+   Do not create a duplicate pointer; do not hide the native cursor for
+   touch or reduced-motion users. */
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  body.has-custom-pointer .academic-viewer.academic-viewer--cursor-layer,
+  body.has-custom-pointer .academic-viewer.academic-viewer--cursor-layer *,
+  body.has-custom-pointer .academic-viewer.academic-viewer--cursor-layer::backdrop {
+    cursor: none !important;
+  }
+  body.has-custom-pointer .academic-viewer--cursor-layer .showcase-pointer {
+    z-index: 4100;
+    pointer-events: none;
+  }
+}
+
+
+/* Computer Programming 1 original recording, without changing other pages. */
+body[data-page="academics"] .academic-video-feature{max-width:1800px;margin:0 auto;padding:0 clamp(22px,6.4vw,125px) clamp(78px,9vw,130px);color:#f8f2ff}
+.academic-video-header{border-top:1px solid rgba(212,188,255,.27);padding-top:clamp(25px,4vw,64px);margin-bottom:clamp(24px,3vw,42px)}
+.academic-video-kicker{display:block;margin-bottom:17px;font:700 11px/1.4 system-ui,sans-serif;letter-spacing:.17em;color:#bda0ef}
+.academic-video-heading-row{display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+.academic-video-heading-row h2{margin:0 0 12px;font:800 clamp(37px,5vw,84px)/.99 Arial,Helvetica,sans-serif;letter-spacing:-.055em;text-transform:uppercase}
+.academic-video-heading-row h2 em{font-style:normal;color:#c4a3f8}
+.academic-video-heading-row p{margin:0;max-width:560px;font:400 clamp(13px,1.2vw,16px)/1.55 system-ui,sans-serif;color:#ddd0e9}
+.academic-video-duration{white-space:nowrap;font:600 12px/1.4 system-ui,sans-serif;letter-spacing:.1em;color:#afc8fd;padding-bottom:6px}
+.academic-video-frame{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:clamp(9px,1.2vw,18px);background:#090b16;border:1px solid rgba(213,193,245,.32);box-shadow:0 22px 80px rgba(2,0,18,.42),0 0 80px rgba(123,65,194,.13)}
+.academic-video-player{display:block;width:100%;height:100%;object-fit:contain;aspect-ratio:16/9;background:#090b16}
+.academic-video-footer{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-top:17px}
+.academic-video-footer span{font:700 10px/1.5 system-ui,sans-serif;letter-spacing:.1em;color:#bca3e3}
+.academic-video-footer p{margin:0;text-align:right;font:400 12px/1.5 system-ui,sans-serif;color:#d2c3e3}
+@media(max-width:720px){
+ body[data-page="academics"] .academic-video-feature{padding:0 20px 65px}
+ .academic-video-heading-row{display:block}
+ .academic-video-heading-row h2{font-size:clamp(37px,9vw,60px)}
+ .academic-video-duration{display:block;margin-top:15px}
+ .academic-video-footer{flex-direction:column;gap:7px}
+ .academic-video-footer p{text-align:left}
+}
+@media(pointer:fine) and (prefers-reduced-motion:no-preference){
+ body.has-custom-pointer.academic-video-native-pointer .showcase-pointer{opacity:0!important}
+ body.has-custom-pointer.academic-video-native-pointer .academic-video-player{cursor:auto!important}
+}

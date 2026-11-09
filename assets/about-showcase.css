@@ -1,0 +1,425 @@
+/* ABOUT ME / NASH — Editorial violet glass showcase.
+   Exclusively styles the existing #about section on the home page. */
+body[data-page="home"] .about.about-showcase {
+  --nash-lilac:#d8b8ff;
+  --nash-cool:#a7bbff;
+  --nash-soft:#e9dff8;
+  --nash-faint:#bfb1d5;
+  isolation:isolate;
+  position:relative;
+  z-index:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+  width:100%;
+  min-height:100svh;
+  padding:clamp(104px,11vh,142px) clamp(23px,5.8vw,105px) clamp(68px,7vw,115px);
+  color:#f8f4ff;
+  background:
+    radial-gradient(ellipse 52% 37% at 89% 7%,rgba(94,56,172,.24),transparent 75%),
+    radial-gradient(ellipse 42% 47% at 5% 89%,rgba(43,70,143,.21),transparent 76%),
+    linear-gradient(125deg,#0b0a17 3%,#171027 52%,#0d0b1c 100%);
+  overflow:hidden;
+}
+body[data-page="home"] .about.about-showcase::before {
+  content:"";
+  position:absolute;inset:-10%;
+  z-index:-1;pointer-events:none;
+  background-image:
+    radial-gradient(circle,rgba(222,204,255,.25) .8px,transparent 1.3px),
+    radial-gradient(circle,rgba(148,134,249,.21) .9px,transparent 1.5px);
+  background-size:104px 111px,183px 159px;
+  background-position:12px 34px,85px 55px;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 14%,#000 86%,transparent);
+  mask-image:linear-gradient(to bottom,transparent 0%,#000 14%,#000 86%,transparent);
+  opacity:.65;
+}
+body[data-page="home"] .about.about-showcase::after {
+  content:"";
+  position:absolute;
+  z-index:-1;pointer-events:none;
+  width:85vw;height:70vw;max-width:1300px;max-height:990px;
+  border:1px solid rgba(168,125,249,.10);
+  border-radius:50%;
+  right:-41vw;top:-42vw;
+  box-shadow:0 0 0 52px rgba(161,128,248,.022),0 0 0 105px rgba(161,128,248,.017);
+  transform:rotate(-18deg);
+}
+body[data-page="home"] .about.about-showcase .about-accent {display:none}
+
+body[data-page="home"] .about-showcase-head,
+body[data-page="home"] .about-showcase .about-grid,
+body[data-page="home"] .about-showcase .about-journey,
+body[data-page="home"] .about-showcase .about-actions {
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:1335px;
+  margin-left:auto;
+  margin-right:auto;
+}
+body[data-page="home"] .about-showcase-head {
+  display:grid;
+  grid-template-columns:minmax(0,1.55fr) minmax(230px,.55fr);
+  column-gap:clamp(22px,5vw,85px);
+  align-items:end;
+  margin-bottom:clamp(34px,4.2vw,65px);
+}
+body[data-page="home"] .about-showcase-kicker {
+  grid-column:1/-1;
+  display:flex;align-items:center;gap:12px;
+  margin:0 0 clamp(17px,2.4vw,28px);
+  color:#c3b4db;
+  font:600 11px/1.4 'Julius Sans One',Arial,sans-serif;
+  letter-spacing:.15em;
+}
+body[data-page="home"] .about-kicker-led {
+  width:7px;height:7px;border-radius:50%;
+  background:#bd89fa;
+  box-shadow:0 0 16px rgba(203,145,255,.78);
+  flex:none;
+}
+body[data-page="home"] .about-kicker-index {
+  opacity:.65;
+  margin-left:auto;
+  color:#a8b6e6;
+}
+body[data-page="home"] .about-showcase-title {
+  display:block;
+  margin:0;
+  padding:0;
+  color:#f5f2ff;
+  font:900 clamp(56px,7.7vw,122px)/.88 'Londrina Solid',Impact,'Arial Narrow',sans-serif;
+  letter-spacing:-.029em;
+  text-transform:uppercase;
+  text-wrap:balance;
+  text-shadow:0 12px 50px rgba(0,0,0,.16);
+}
+body[data-page="home"] .about-showcase-title em {
+  font-family:'Lora',Georgia,serif;
+  font-style:italic;font-weight:600;
+  letter-spacing:-.07em;
+  text-transform:none;
+  background:linear-gradient(115deg,#abbfff 6%,#dfb6ff 55%,#f6d8ff 100%);
+  color:transparent;
+  -webkit-background-clip:text;background-clip:text;
+}
+body[data-page="home"] .about-showcase-description {
+  margin:0 0 7px;
+  max-width:325px;
+  color:#c7bdd9;
+  font:400 clamp(14px,1.2vw,17px)/1.75 'Lora',Georgia,serif;
+}
+
+body[data-page="home"] .about-showcase .about-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(14px,1.65vw,25px);
+  align-items:stretch;
+  margin-top:0;
+  margin-bottom:0;
+}
+body[data-page="home"] .about-showcase-card.about-tile {
+  --about-pointer-x:50%;
+  --about-pointer-y:50%;
+  position:relative;
+  display:flex;flex-direction:column;
+  min-width:0;
+  min-height:clamp(355px,31vw,446px);
+  margin:0;
+  padding:clamp(22px,2.2vw,32px);
+  border-radius:clamp(19px,2vw,28px);
+  border:1px solid rgba(213,188,255,.21);
+  background:
+    radial-gradient(ellipse at 15% 0%,rgba(154,104,242,.14),transparent 65%),
+    linear-gradient(143deg,rgba(46,36,76,.90) 0%,rgba(22,19,45,.94) 65%,rgba(23,18,42,.97) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.11),0 26px 70px rgba(4,3,17,.21);
+  -webkit-backdrop-filter:blur(15px);
+  backdrop-filter:blur(15px);
+  isolation:isolate;
+  overflow:hidden;
+  transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .35s ease,box-shadow .35s ease;
+}
+body[data-page="home"] .about-showcase-card.about-tile::before {
+  content:"";
+  position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(380px circle at var(--about-pointer-x) var(--about-pointer-y),rgba(198,156,255,.17),transparent 65%);
+  opacity:.56;
+  transition:opacity .3s ease;
+}
+body[data-page="home"] .about-showcase-card.about-tile::after {
+  content:"";position:absolute;inset:1px;
+  border-radius:inherit;z-index:-1;pointer-events:none;
+  background:linear-gradient(145deg,rgba(255,255,255,.06),transparent 28%,transparent 73%,rgba(171,143,255,.06));
+}
+body[data-page="home"] .about-showcase-card.about-tile-age {
+  background:
+    radial-gradient(ellipse at 80% 3%,rgba(112,122,255,.23),transparent 60%),
+    linear-gradient(155deg,rgba(33,34,77,.95),rgba(21,19,48,.96));
+}
+body[data-page="home"] .about-showcase-card.about-tile-creative {
+  background:
+    radial-gradient(ellipse at 50% 29%,rgba(149,85,222,.23),transparent 64%),
+    linear-gradient(145deg,rgba(45,31,68,.94),rgba(19,20,43,.97));
+}
+@media (hover:hover) and (pointer:fine) {
+  body[data-page="home"] .about-showcase-card.about-tile:hover {
+    transform:translateY(-7px);
+    border-color:rgba(211,178,255,.58);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 38px 85px rgba(2,2,18,.33),0 0 44px rgba(144,90,220,.10);
+  }
+  body[data-page="home"] .about-showcase-card.about-tile:hover::before {opacity:1}
+}
+body[data-page="home"] .about-card-header,
+body[data-page="home"] .about-card-footer {
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+body[data-page="home"] .about-showcase-card .tile-label {
+  font:600 10px/1.4 'Julius Sans One',sans-serif;
+  letter-spacing:.13em;color:#ddc7ef;
+}
+body[data-page="home"] .about-card-glyph {
+  color:#cfb0fb;
+  font:400 25px/1 'Lora',serif;
+  opacity:.8;
+}
+body[data-page="home"] .about-card-glyph--tiny {font-size:19px}
+body[data-page="home"] .about-card-main {
+  flex:1;display:flex;flex-direction:column;
+  align-items:flex-start;justify-content:center;
+  min-height:0;
+  position:relative;
+}
+body[data-page="home"] .about-date-art {
+  position:relative;
+  display:flex;align-items:center;gap:12px;
+  width:100%;
+  margin:24px 0 14px;
+}
+body[data-page="home"] .about-date-art strong {
+  display:block;
+  font:900 clamp(106px,10vw,175px)/.8 'Londrina Solid',Impact,sans-serif;
+  letter-spacing:-.08em;
+  color:#eee5fc;
+  text-shadow:0 16px 46px rgba(176,104,242,.19);
+}
+body[data-page="home"] .about-date-month {
+  align-self:center;
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  font:600 12px/1 'Julius Sans One',sans-serif;
+  letter-spacing:.26em;color:#bdb6eb;
+}
+body[data-page="home"] .about-date-year {
+  align-self:flex-end;
+  margin:0 0 9px -8px;
+  font:400 clamp(18px,2vw,27px)/1 'Lora',serif;
+  color:#b7a0e0;
+}
+body[data-page="home"] .about-card-line {
+  max-width:310px;
+  margin:12px 0 8px;
+  font:400 clamp(14px,1.15vw,17px)/1.65 'Lora',Georgia,serif;
+  color:#cfc4e0;
+}
+body[data-page="home"] .about-card-line strong {font-weight:600;color:#f7ebff}
+body[data-page="home"] .about-card-footer {
+  color:#a99fbd;
+  font:700 9px/1.5 'Julius Sans One',sans-serif;
+  letter-spacing:.09em;
+  padding-top:18px;
+  border-top:1px solid rgba(224,202,255,.14);
+}
+body[data-page="home"] .about-card-rule {
+  height:1px;flex:1;
+  background:linear-gradient(90deg,rgba(190,159,255,.26),transparent);
+}
+body[data-page="home"] .about-age-main {justify-content:center}
+body[data-page="home"] .about-age-art {display:flex;flex-direction:column;align-items:flex-start;position:relative;margin:8px 0 5px}
+body[data-page="home"] .about-age-mini {
+  font:600 10px/1.2 'Julius Sans One',sans-serif;
+  letter-spacing:.17em;color:#b5c4f5;
+}
+body[data-page="home"] .about-age-art strong {
+  position:relative;
+  font:900 clamp(133px,13.3vw,205px)/.84 'Londrina Solid',Impact,sans-serif;
+  letter-spacing:-.085em;
+  color:#f4e9ff;
+  filter:drop-shadow(0 12px 22px rgba(145,128,254,.17));
+}
+body[data-page="home"] .about-age-spark {
+  position:absolute;right:-24px;top:20px;
+  font:400 25px/1 Georgia,serif;
+  color:#a7b9ff;
+}
+body[data-page="home"] .about-age-unit {
+  font:600 11px/1.2 'Julius Sans One',sans-serif;
+  letter-spacing:.24em;color:#bdade1;
+}
+body[data-page="home"] .about-age-main .about-card-line{margin-top:23px}
+body[data-page="home"] .about-curiosity-main {align-items:center;text-align:center}
+body[data-page="home"] .about-curiosity-orbit {
+  position:relative;display:grid;place-items:center;
+  width:clamp(140px,13vw,185px);
+  aspect-ratio:1;margin:7px 0 16px;
+}
+body[data-page="home"] .about-curiosity-orbit::before {
+  content:"";position:absolute;
+  inset:-5%;border-radius:50%;
+  background:radial-gradient(circle,rgba(171,108,249,.18),transparent 68%);
+  filter:blur(10px);
+}
+body[data-page="home"] .about-orbit-track {
+  position:absolute;inset:4%;border-radius:50%;
+  border:1px solid rgba(214,178,255,.40);
+  transform:rotate(-22deg) scaleY(.70);
+}
+body[data-page="home"] .about-orbit-track--b {
+  inset:-6%;border-color:rgba(151,172,255,.25);
+  transform:rotate(43deg) scaleY(.74);
+}
+body[data-page="home"] .about-orbit-center {
+  position:relative;z-index:2;
+  display:grid;place-items:center;
+  width:61%;height:61%;border-radius:50%;
+  background:radial-gradient(circle at 25% 20%,rgba(206,174,255,.29),rgba(92,65,145,.24) 72%);
+  border:1px solid rgba(202,175,255,.27);
+  color:#ebd9ff;
+  font:400 clamp(65px,6vw,88px)/1 'Lora',Georgia,serif;
+  box-shadow:0 12px 36px rgba(7,3,34,.29);
+}
+body[data-page="home"] .about-orbit-star {
+  position:absolute;right:6%;top:6%;color:#b9c6ff;font-size:23px;
+  filter:drop-shadow(0 0 8px rgba(181,150,255,.55));
+}
+body[data-page="home"] .about-curiosity-title {
+  margin:0 !important;
+  font:900 clamp(35px,3.7vw,55px)/1 'Londrina Solid',Impact,sans-serif !important;
+  text-transform:uppercase;
+  letter-spacing:-.025em;
+  color:#f3eaff;
+}
+body[data-page="home"] .about-curiosity-title em {
+  color:#cbb2ff;
+  font-style:normal;
+}
+body[data-page="home"] .about-curiosity-main .about-card-line {
+  text-align:center;margin-top:12px;
+  max-width:280px;
+}
+
+body[data-page="home"] .about-showcase .about-journey {
+  display:flex;align-items:center;gap:18px;
+  margin-top:clamp(33px,4.7vw,60px);
+  color:#bfb1d6;
+  font:600 10px/1.3 'Julius Sans One',sans-serif;
+  letter-spacing:.23em;
+}
+body[data-page="home"] .about-journey-line {
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(212,187,255,.26),transparent);
+  flex:1;
+}
+body[data-page="home"] .about-showcase .about-actions {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:clamp(10px,1.5vw,22px);
+  margin-top:18px;
+  justify-content:initial;
+}
+body[data-page="home"] .about-showcase .about-actions a {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  min-width:0;
+  margin:0;
+  padding:13px 15px 13px 17px;
+  border-radius:999px;
+  color:#f0e7fa;
+  background:linear-gradient(160deg,rgba(140,107,189,.17),rgba(57,48,91,.25));
+  border:1px solid rgba(214,187,251,.24);
+  font:600 clamp(11px,1.05vw,14px)/1.3 'Julius Sans One',sans-serif;
+  letter-spacing:.015em;
+  box-shadow:0 9px 28px rgba(0,0,0,.12);
+  transition:border-color .3s,background .3s,transform .3s,box-shadow .3s;
+}
+body[data-page="home"] .about-showcase .about-actions a:hover,
+body[data-page="home"] .about-showcase .about-actions a:focus-visible {
+  border-color:rgba(222,191,255,.7);
+  background:rgba(141,99,204,.32);
+  transform:translateY(-3px);
+  box-shadow:0 14px 38px rgba(14,7,38,.28);
+}
+body[data-page="home"] .about-link-number {
+  color:#b39bd8;
+  font:500 10px/1.4 'Julius Sans One',sans-serif;
+  opacity:.9;
+}
+body[data-page="home"] .about-link-name {flex:1;}
+body[data-page="home"] .about-link-arrow {
+  flex:none;display:grid;place-items:center;
+  width:35px;height:35px;
+  border-radius:50%;
+  color:#241431;
+  background:#d7b9ff;
+  transition:background .25s,transform .25s;
+}
+body[data-page="home"] .about-link-arrow svg {width:17px;height:17px;transition:transform .25s}
+body[data-page="home"] .about-actions a:hover .about-link-arrow {background:#e7d8ff;transform:rotate(-35deg)}
+body[data-page="home"] .about-actions a:hover svg {transform:translateX(1px);}
+
+@keyframes nash-about-arrive {
+  from {opacity:.62;transform:translateY(18px)}
+  to {opacity:1;transform:translateY(0)}
+}
+body[data-page="home"] .about-showcase .about-in-view {
+  animation:nash-about-arrive .8s cubic-bezier(.16,1,.3,1) both;
+  animation-delay:var(--about-reveal-delay,0ms);
+}
+
+@media (max-width:1050px) {
+  body[data-page="home"] .about-showcase-head{grid-template-columns:1fr}
+  body[data-page="home"] .about-showcase-description{max-width:580px;margin-top:18px}
+  body[data-page="home"] .about-showcase .about-grid{gap:13px}
+  body[data-page="home"] .about-showcase-card.about-tile{min-height:370px;padding:23px}
+  body[data-page="home"] .about-date-art strong{font-size:clamp(108px,11.8vw,150px)}
+  body[data-page="home"] .about-age-art strong{font-size:clamp(122px,15vw,176px)}
+}
+@media (max-width:820px) {
+  body[data-page="home"] .about.about-showcase {padding:calc(var(--nav-height) + 65px) 5vw 70px}
+  body[data-page="home"] .about-showcase .about-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+  body[data-page="home"] .about-showcase-card.about-tile{min-height:370px}
+  body[data-page="home"] .about-showcase-card.about-tile-creative{grid-column:1/-1;min-height:290px}
+  body[data-page="home"] .about-showcase-card.about-tile-creative .about-card-main {padding:5px 0}
+  body[data-page="home"] .about-showcase-card.about-tile-creative .about-curiosity-orbit{width:140px;margin:2px 0 7px}
+  body[data-page="home"] .about-showcase .about-actions{gap:10px}
+  body[data-page="home"] .about-showcase .about-actions a{padding:10px 11px 10px 13px;font-size:10px}
+  body[data-page="home"] .about-link-arrow{width:29px;height:29px}
+  body[data-page="home"] .about-link-number{display:none}
+}
+@media (max-width:600px) {
+  body[data-page="home"] .about.about-showcase{padding:calc(var(--nav-height) + 45px) 20px 65px}
+  body[data-page="home"] .about-showcase-title{font-size:clamp(54px,12.3vw,77px)}
+  body[data-page="home"] .about-showcase-kicker{font-size:9px}
+  body[data-page="home"] .about-showcase-description{font-size:14px;line-height:1.65}
+  body[data-page="home"] .about-showcase-head{margin-bottom:30px}
+  body[data-page="home"] .about-showcase .about-grid{grid-template-columns:1fr;gap:16px}
+  body[data-page="home"] .about-showcase-card.about-tile{min-height:310px;padding:24px;border-radius:23px}
+  body[data-page="home"] .about-showcase-card.about-tile-age{min-height:330px}
+  body[data-page="home"] .about-showcase-card.about-tile-creative{grid-column:auto;min-height:355px}
+  body[data-page="home"] .about-date-art{margin:12px 0 4px}
+  body[data-page="home"] .about-date-art strong{font-size:145px}
+  body[data-page="home"] .about-age-art strong{font-size:157px}
+  body[data-page="home"] .about-showcase .about-actions{grid-template-columns:1fr;gap:10px;margin-top:17px}
+  body[data-page="home"] .about-showcase .about-actions a{padding:12px 14px 12px 18px;font-size:12px}
+  body[data-page="home"] .about-link-number{display:block}
+  body[data-page="home"] .about-link-arrow{width:35px;height:35px}
+  body[data-page="home"] .about-showcase .about-journey{margin-top:40px}
+}
+@media (prefers-reduced-motion:reduce) {
+  body[data-page="home"] .about-showcase .about-in-view{animation:none!important}
+  body[data-page="home"] .about-showcase-card.about-tile,
+  body[data-page="home"] .about-showcase .about-actions a,
+  body[data-page="home"] .about-link-arrow {transition:none!important;transform:none!important}
+}

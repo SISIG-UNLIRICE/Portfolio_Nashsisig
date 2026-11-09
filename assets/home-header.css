@@ -1,0 +1,24 @@
+/* Home layout under the shared glass header in assets/navigation.css. */
+body[data-page="home"] .hero,
+body[data-page="home"] .hero-content {
+  min-height: 100svh;
+}
+body[data-page="home"] .hero-content {
+  padding-top: calc(var(--nav-height) + clamp(80px, 11vh, 120px));
+}
+@media (max-width: 960px) {
+  body[data-page="home"] .hero > .jelly-bg {
+    top: 0;
+    height: 100svh;
+  }
+  body[data-page="home"] .hero-content {
+    /* 300px strap minus the 20px overlap at the badge top. */
+    padding-top: calc(var(--nav-height) + 330px);
+  }
+}
+@media (max-width: 720px) {
+  body[data-page="home"] .hero-content {
+    /* 230px mobile strap minus the 20px overlap at the badge top. */
+    padding-top: calc(var(--nav-height) + 210px);
+  }
+}

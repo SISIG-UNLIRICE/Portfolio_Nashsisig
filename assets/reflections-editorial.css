@@ -1,0 +1,179 @@
+/* Nash Tolin Reflections: ONLY the expandable term-list layout is new.
+   The original jellyfish video, header, footer, page heading, background,
+   and original reflection writing all remain managed by app.js/styles.css. */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=DM+Mono:wght@400;500&display=swap');
+
+body[data-page="reflections"] .reflection-accordion-instructions {
+  margin: 14px 0 0;
+  max-width: 550px;
+  font: 400 clamp(13px,1.2vw,17px)/1.65 system-ui,sans-serif;
+  color: #d9cde8;
+  text-shadow: 0 2px 12px rgba(4,1,16,.7);
+}
+
+body[data-page="reflections"] .reflection-accordion-list {
+  --accordion-accent: var(--violet-light, #bb90fe);
+  --accordion-line: rgba(205,191,220,.35);
+  width: 100%;
+  border-top: 1px solid var(--accordion-line);
+  background: rgba(12,7,28,.45);
+  -webkit-backdrop-filter: blur(9px);
+  backdrop-filter: blur(9px);
+  box-shadow: 0 18px 65px rgba(5,0,20,.2);
+}
+
+body[data-page="reflections"] .reflection-accordion-list *,
+body[data-page="reflections"] .reflection-accordion-list *::before,
+body[data-page="reflections"] .reflection-accordion-list *::after {
+  box-sizing: border-box;
+}
+
+body[data-page="reflections"] .reflection-accordion-item {
+  border-bottom: 1px solid var(--accordion-line);
+  min-width: 0;
+  background: transparent;
+  transition: background .25s ease;
+}
+
+body[data-page="reflections"] .reflection-accordion-heading {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+body[data-page="reflections"] .reflection-accordion-toggle {
+  width: 100%;
+  display: grid;
+  grid-template-columns: clamp(92px,11vw,145px) minmax(0,1fr) 126px 35px;
+  align-items: center;
+  column-gap: 10px;
+  min-height: clamp(116px,12vw,154px);
+  border: 0;
+  padding: 16px clamp(15px,2.5vw,33px);
+  border-radius: 0;
+  color: var(--ink, #f7f4ff);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body[data-page="reflections"] .reflection-accordion-index,
+body[data-page="reflections"] .reflection-accordion-action {
+  color: #d5c2eb;
+  font: 500 clamp(9px,.85vw,11px)/1.4 'DM Mono',Consolas,monospace;
+  letter-spacing: .04em;
+  white-space: nowrap;
+  text-shadow: 0 1px 8px #0d041f;
+}
+
+body[data-page="reflections"] .reflection-accordion-title {
+  display: inline-block;
+  min-width: 0;
+  font: 400 clamp(43px,5.2vw,78px)/1.1 'Anton','Londrina Solid','Arial Narrow',Impact,sans-serif;
+  letter-spacing: -.04em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  color: var(--ink, #f7f4ff);
+  text-shadow: 0 2px 18px rgba(7,2,22,.64);
+  transition: transform .25s ease;
+}
+
+body[data-page="reflections"] .reflection-accordion-period {
+  color: var(--accordion-accent);
+  margin-left: 1px;
+}
+body[data-page="reflections"] .reflection-accordion-plus {
+  width: 27px;
+  height: 27px;
+  position: relative;
+  justify-self: end;
+  color: var(--accordion-accent);
+}
+body[data-page="reflections"] .reflection-accordion-plus::before,
+body[data-page="reflections"] .reflection-accordion-plus::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: currentColor;
+  transform: translate(-50%,-50%);
+  transition: opacity .2s ease,transform .2s ease;
+}
+body[data-page="reflections"] .reflection-accordion-plus::before { width: 25px; height: 2px; }
+body[data-page="reflections"] .reflection-accordion-plus::after { width: 2px; height: 25px; }
+body[data-page="reflections"] .reflection-accordion-item.is-open .reflection-accordion-plus::after { opacity: 0; transform: translate(-50%,-50%) rotate(90deg); }
+body[data-page="reflections"] .reflection-accordion-item.is-open .reflection-accordion-action { color: #d9b0ff; }
+
+body[data-page="reflections"] .reflection-accordion-toggle:focus-visible {
+  outline: 3px solid #e5b7ff;
+  outline-offset: -4px;
+}
+@media (hover:hover) and (pointer:fine) {
+  body[data-page="reflections"] .reflection-accordion-item:hover { background: rgba(113,72,158,.15); }
+  body[data-page="reflections"] .reflection-accordion-toggle:hover .reflection-accordion-title {
+    transform: translateX(7px);
+    color: #dfc5ff;
+  }
+}
+
+body[data-page="reflections"] .reflection-accordion-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows .45s cubic-bezier(.22,1,.36,1),opacity .25s ease;
+}
+body[data-page="reflections"] .reflection-accordion-item.is-open .reflection-accordion-panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+body[data-page="reflections"] .reflection-accordion-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+body[data-page="reflections"] .reflection-accordion-content {
+  max-width: 1000px;
+  padding: 2px clamp(20px,4vw,52px) 38px clamp(20px,calc(11vw + 47px),206px);
+}
+body[data-page="reflections"] .reflection-accordion-meta {
+  margin: 0 0 16px;
+  font: 500 11px/1.5 'DM Mono',Consolas,monospace;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #cba5f8;
+}
+body[data-page="reflections"] .reflection-accordion-prose {
+  margin: 0;
+  font: 400 clamp(16px,1.45vw,20px)/1.75 system-ui,sans-serif;
+  color: #ece2f6;
+  text-shadow: 0 2px 12px rgba(7,3,21,.56);
+}
+
+@media (max-width: 720px) {
+  body[data-page="reflections"] .reflection-accordion-list {
+    background: rgba(12,7,28,.55);
+  }
+  body[data-page="reflections"] .reflection-accordion-toggle {
+    grid-template-columns: 66px minmax(0,1fr) 28px;
+    column-gap: 6px;
+    padding: 17px 13px;
+    min-height: 112px;
+  }
+  body[data-page="reflections"] .reflection-accordion-index { font-size: 9px; }
+  body[data-page="reflections"] .reflection-accordion-title {
+    font-size: clamp(35px,8.5vw,54px);
+    letter-spacing: -.035em;
+  }
+  body[data-page="reflections"] .reflection-accordion-action { display: none; }
+  body[data-page="reflections"] .reflection-accordion-content { padding: 2px 20px 30px; }
+  body[data-page="reflections"] .reflection-accordion-plus { width: 24px; height: 24px; }
+  body[data-page="reflections"] .reflection-accordion-plus::before { width: 22px; }
+  body[data-page="reflections"] .reflection-accordion-plus::after { height: 22px; }
+  body[data-page="reflections"] .reflection-accordion-meta { font-size: 10px; line-height: 1.7; }
+  body[data-page="reflections"] .reflection-accordion-prose { font-size: 16px; line-height: 1.7; }
+}
+@media (prefers-reduced-motion:reduce) {
+  body[data-page="reflections"] .reflection-accordion-list *,
+  body[data-page="reflections"] .reflection-accordion-list *::before,
+  body[data-page="reflections"] .reflection-accordion-list *::after { transition:none!important;transform:none!important; }
+}
